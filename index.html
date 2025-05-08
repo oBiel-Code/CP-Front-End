@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espaço de Foco Digital</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="light-theme">
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-toggle" id="sidebar-toggle">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            
+            <div class="profile">
+                <div class="avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Meu Espaço</h3>
+                <p class="profile-status">Modo Foco</p>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#" class="nav-link" data-tooltip="Ferramentas de Produtividade">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Produtividade</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link" data-tooltip="Recursos de Aprendizado">
+                            <i class="fas fa-book"></i>
+                            <span>Aprendizado</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link" data-tooltip="Gerenciamento de Projetos">
+                            <i class="fas fa-tasks"></i>
+                            <span>Projetos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link" data-tooltip="Biblioteca de Recursos">
+                            <i class="fas fa-folder"></i>
+                            <span>Recursos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link" data-tooltip="Músicas para Concentração">
+                            <i class="fas fa-music"></i>
+                            <span>Música</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                    <span>Tema Escuro</span>
+                </div>
+                <div class="sound-toggle" id="sound-toggle">
+                    <i class="fas fa-volume-up"></i>
+                    <span>Sons Ambiente</span>
+                </div>
+                <p class="sidebar-quote">Foco é uma escolha diária</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Background Elements -->
+            <div class="background-elements">
+                <div class="particle-container" id="particles"></div>
+                <div class="floating-elements">
+                    <div class="floating-element" id="element1"></div>
+                    <div class="floating-element" id="element2"></div>
+                    <div class="floating-element" id="element3"></div>
+                </div>
+            </div>
+
+            <!-- Header -->
+            <header class="header">
+                <div class="date-time">
+                    <div class="current-date" id="current-date"></div>
+                    <div class="current-time" id="current-time"></div>
+                </div>
+                <div class="header-controls">
+                    <button class="header-btn" id="fullscreen-btn" title="Modo Tela Cheia">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                    <button class="header-btn" id="settings-btn" title="Configurações">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Focus Area -->
+            <div class="focus-area">
+                <h1 class="focus-title">Momento de <span class="highlight">Foco</span></h1>
+                <p class="quote" id="inspiration-quote">"A atenção é a mais rara e pura forma de generosidade."</p>
+                <button class="quote-refresh" id="quote-refresh" title="Nova Citação">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+                
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="pomodoro">
+                        <i class="fas fa-clock"></i> Pomodoro
+                    </button>
+                    <button class="tab-btn" data-tab="notes">
+                        <i class="fas fa-sticky-note"></i> Anotações
+                    </button>
+                    <button class="tab-btn" data-tab="tasks">
+                        <i class="fas fa-check-circle"></i> Tarefas
+                    </button>
+                </div>
+                
+                <!-- Tab Content -->
+                <div class="tab-content">
+                    <!-- Pomodoro Tab -->
+                    <div class="tab-pane active" id="pomodoro-tab">
+                        <div class="pomodoro-container">
+                            <div class="timer-modes">
+                                <button class="mode-btn active" data-mode="focus" data-minutes="25">Foco</button>
+                                <button class="mode-btn" data-mode="short-break" data-minutes="5">Pausa Curta</button>
+                                <button class="mode-btn" data-mode="long-break" data-minutes="15">Pausa Longa</button>
+                            </div>
+                            
+                            <div class="timer-circle">
+                                <svg class="timer-svg" viewBox="0 0 100 100">
+                                    <circle class="timer-background" cx="50" cy="50" r="45"></circle>
+                                    <circle class="timer-progress" cx="50" cy="50" r="45" id="timer-progress"></circle>
+                                </svg>
+                                <div class="timer-display">
+                                    <span id="minutes">25</span>:<span id="seconds">00</span>
+                                </div>
+                            </div>
+                            
+                            <div class="timer-controls">
+                                <button id="start-btn" class="timer-btn">
+                                    <i class="fas fa-play"></i>
+                                    <span>Iniciar</span>
+                                </button>
+                                <button id="pause-btn" class="timer-btn" disabled>
+                                    <i class="fas fa-pause"></i>
+                                    <span>Pausar</span>
+                                </button>
+                                <button id="reset-btn" class="timer-btn">
+                                    <i class="fas fa-redo-alt"></i>
+                                    <span>Reiniciar</span>
+                                </button>
+                            </div>
+                            
+                            <div class="pomodoro-stats">
+                                <div class="stat">
+                                    <span class="stat-value" id="completed-pomodoros">0</span>
+                                    <span class="stat-label">Pomodoros</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value" id="focus-minutes">0</span>
+                                    <span class="stat-label">Minutos Focados</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Notes Tab -->
+                    <div class="tab-pane" id="notes-tab">
+                        <div class="notes-container">
+                            <div class="notes-header">
+                                <h2>Anotações Rápidas</h2>
+                                <div class="notes-controls">
+                                    <button id="save-notes" class="notes-btn" title="Salvar Anotações">
+                                        <i class="fas fa-save"></i>
+                                    </button>
+                                    <button id="clear-notes" class="notes-btn" title="Limpar Anotações">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="notes-content">
+                                <textarea id="quick-notes" placeholder="Escreva seus pensamentos aqui..."></textarea>
+                            </div>
+                            <div class="notes-footer">
+                                <span id="notes-status">Salvo automaticamente</span>
+                                <span id="notes-char-count">0 caracteres</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tasks Tab -->
+                    <div class="tab-pane" id="tasks-tab">
+                        <div class="tasks-container">
+                            <div class="tasks-header">
+                                <h2>Tarefas do Dia</h2>
+                                <button id="clear-all-tasks" class="tasks-btn" title="Limpar Todas as Tarefas">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="task-input-container">
+                                <input type="text" id="task-input" placeholder="Adicione uma nova tarefa...">
+                                <button id="add-task" title="Adicionar Tarefa">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="task-filters">
+                                <button class="filter-btn active" data-filter="all">Todas</button>
+                                <button class="filter-btn" data-filter="active">Ativas</button>
+                                <button class="filter-btn" data-filter="completed">Concluídas</button>
+                            </div>
+                            
+                            <ul id="task-list" class="task-list"></ul>
+                            
+                            <div class="tasks-summary">
+                                <span id="tasks-count">0 tarefas restantes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ambient Sounds Player -->
+            <div class="ambient-player" id="ambient-player">
+                <div class="ambient-header">
+                    <h3>Sons Ambiente</h3>
+                    <button id="close-ambient" class="close-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="ambient-sounds">
+                    <div class="sound-item" data-sound="rain">
+                        <div class="sound-icon">
+                            <i class="fas fa-cloud-rain"></i>
+                        </div>
+                        <span>Chuva</span>
+                        <input type="range" min="0" max="100" value="70" class="volume-slider">
+                    </div>
+                    <div class="sound-item" data-sound="forest">
+                        <div class="sound-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <span>Floresta</span>
+                        <input type="range" min="0" max="100" value="70" class="volume-slider">
+                    </div>
+                    <div class="sound-item" data-sound="cafe">
+                        <div class="sound-icon">
+                            <i class="fas fa-coffee"></i>
+                        </div>
+                        <span>Café</span>
+                        <input type="range" min="0" max="100" value="70" class="volume-slider">
+                    </div>
+                    <div class="sound-item" data-sound="fire">
+                        <div class="sound-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <span>Lareira</span>
+                        <input type="range" min="0" max="100" value="70" class="volume-slider">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Settings Modal -->
+            <div class="modal" id="settings-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Configurações</h2>
+                        <button class="close-modal">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="settings-section">
+                            <h3>Aparência</h3>
+                            <div class="setting-item">
+                                <span>Tema</span>
+                                <div class="theme-options">
+                                    <button class="theme-option" data-theme="light">Claro</button>
+                                    <button class="theme-option" data-theme="dark">Escuro</button>
+                                    <button class="theme-option" data-theme="nature">Natureza</button>
+                                    <button class="theme-option" data-theme="ocean">Oceano</button>
+                                </div>
+                            </div>
+                            <div class="setting-item">
+                                <span>Animações</span>
+                                <label class="toggle">
+                                    <input type="checkbox" id="animations-toggle" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="settings-section">
+                            <h3>Timer</h3>
+                            <div class="setting-item">
+                                <span>Duração do Foco</span>
+                                <div class="time-setting">
+                                    <button class="time-btn" data-action="decrease">-</button>
+                                    <input type="number" id="focus-duration" min="1" max="60" value="25">
+                                    <button class="time-btn" data-action="increase">+</button>
+                                </div>
+                            </div>
+                            <div class="setting-item">
+                                <span>Duração da Pausa Curta</span>
+                                <div class="time-setting">
+                                    <button class="time-btn" data-action="decrease">-</button>
+                                    <input type="number" id="short-break-duration" min="1" max="30" value="5">
+                                    <button class="time-btn" data-action="increase">+</button>
+                                </div>
+                            </div>
+                            <div class="setting-item">
+                                <span>Duração da Pausa Longa</span>
+                                <div class="time-setting">
+                                    <button class="time-btn" data-action="decrease">-</button>
+                                    <input type="number" id="long-break-duration" min="1" max="60" value="15">
+                                    <button class="time-btn" data-action="increase">+</button>
+                                </div>
+                            </div>
+                            <div class="setting-item">
+                                <span>Som de Alarme</span>
+                                <label class="toggle">
+                                    <input type="checkbox" id="alarm-toggle" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="settings-section">
+                            <h3>Notificações</h3>
+                            <div class="setting-item">
+                                <span>Notificações de Desktop</span>
+                                <button id="enable-notifications" class="btn">Ativar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="save-settings" class="btn primary-btn">Salvar Configurações</button>
+                        <button id="reset-settings" class="btn">Restaurar Padrões</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="timer-complete" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="task-complete" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-software-interface-start-2574.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="click-sound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-modern-technology-select-2-2516.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Ambient Sounds -->
+    <audio id="rain-sound" loop>
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-rain-and-thunder-storm-2390.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="forest-sound" loop>
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-forest-birds-ambience-1210.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="cafe-sound" loop>
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-restaurant-crowd-talking-ambience-447.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="fire-sound" loop>
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-campfire-crackles-1330.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
