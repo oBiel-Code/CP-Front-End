@@ -1142,9 +1142,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Update theme toggle icon and text
     if (theme === "dark") {
-      themeToggle.innerHTML = '<i class="fas fa-sun"></i><span>Tema Claro</span>'
+      themeToggle.innerHTML = '<i class="fas fa-sun"></i><span>Alterar Tema</span>'
     } else {
-      themeToggle.innerHTML = '<i class="fas fa-moon"></i><span>Tema Escuro</span>'
+      themeToggle.innerHTML = '<i class="fas fa-moon"></i><span>Alterar Tema</span>'
     }
   }
 
